@@ -1,6 +1,6 @@
 <master src="@master_template@">
-<property name="title">@page_title@</property>
-<property name="context">@context@</property>
+<property name="title">@page_title;noquote@</property>
+<property name="context">@context;noquote@</property>
 
 <form action=index>
  @search_vars@
@@ -57,7 +57,7 @@
      <tr>
       <td class="HighlightColor">
         <table border="0" cellpadding="3" cellspacing="1" align="center" width="100%">
-          @row_range_html@
+          @row_range_html;noquote@
          <tr class="HighlightColor">
           <th>@name_header@</th>
           <th>@email_header@</th>
