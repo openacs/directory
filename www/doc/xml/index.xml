@@ -1,0 +1,62 @@
+<?xml version='1.0' ?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+   "http://developer.arsdigita.com/docbook/dtd/4.1.2/docbookx.dtd" >
+
+<book>
+<title>Directory Package Documentation</title>
+
+<authorblurb>
+<para>By <ulink url="mailto:mikeb@arsdigita.com">Mike Bonnet</ulink></para>
+</authorblurb>
+
+<abstract>
+<title>Installation</title>
+<para>
+This is the Directory Package.  It is a very simple (1 page) package for listing 
+and searching through the members of a subsite.  It is fully subsite-aware, using the 
+<computeroutput>application_groups</computeroutput> functionality in ACS4.2 to define subsite membership.
+</para>
+<para>
+If you're reading this, then you probably have the package installed already.  If not, 
+load the .apm file into the package manager (/acs-admin/apm/) and click install.  The data
+model for this package is very minimal (3 views) and should load very quickly.  If there are
+any errors loading this package, make sure you are using ACS4.2, since this package requires 
+the new subsite-scoping features.  If you geta "query returned no rows" error, visit the admin/groups 
+page for your subsite, so that it can configure itself as necessary, and then try the Directory 
+package again.
+</para>
+</abstract>
+
+<abstract>
+<title>Using the Directory Package</title>
+<para>
+Now that you have the package installed, you need to mount it somewhere.  If you only 
+have one instance of the acs-subsite package mounted (the "Main Site") you can mount it anyhwere 
+under that package.  If you have multiple instances of acs-subsite, you can mount an instance of 
+Directory under each subsite.
+</para>
+<para>
+When listing users, the Directory package will find the nearest subsite above it on the site_nodes 
+tree.  It will then list everybody that is a member of that subsite (based on membership in the 
+<computeroutput>application_group</computeroutput> associated with that subsite, see 
+packages/acs-subsite/sql/application-groups-create.sql).
+</para>
+<para>
+A user can make themself a member of a subsite instance by visiting &lt;subsite_url&gt;/register/user-join.  
+They will then show up in the Directory listing for that subsite.  An admin can also make a user a member of 
+a subsite instance by going to &lt;subsite_url&gt;/admin/groups/?view_by=rel_type.  Note that to add a user to 
+a subsite, they must be a member of all of the subsites above it in the site_nodes tree.  register/user-join takes 
+care of this automatically, but an admin must manually handle all of the constraints when adding a new member.
+</para>
+<para>
+The list of users displayed can be restricted by the letter their last name starts with, or a search criteria.  
+The search shows users that have the search criteria anywhere in their first name, last name, or email address 
+(case-insensitive).  When searching, a "browse by letter" link will appear next to the search box, to allow you to 
+go back to browse mode.  When searching or browsing, the number of results per page can be restricted by clicking 
+one of the "show" links on the left side.  You also have the choice of viewing "subsite members" (people who have 
+been explicitly made a member of the current subsite) or "all users" (all registered users of the site).
+</para>
+</abstract>
+
+</book>
+
