@@ -97,14 +97,16 @@ set name_header [ad_decode $order_by "name" "<a href=index?order_by=name-&$heade
 set email_header [ad_decode $order_by "email" "<a href=index?order_by=email-&$header_link_vars>E-mail Address:</a>&nbsp;^" "email-" "<a href=index?order_by=email&$header_link_vars>E-mail Address:</a>&nbsp;v" "<a href=index?order_by=email&$header_link_vars>E-mail Address:</a>"]
 
 if { $num_rows == 0 } {
-    db_multirow -extend { email_partial } all_user_data get_all_users "" {
+    db_multirow -extend { member_url email_partial } all_user_data get_all_users "" {
 	set email_partial [string replace $email \
 		[expr [string first "@" $email]+3] end "..."]
+        set member_url [acs_community_member_url -user_id $user_id]
     } 
 } else {
-    db_multirow -extend { email_partial } all_user_data get_all_n_users "" {
+    db_multirow -extend { member_url email_partial } all_user_data get_all_n_users "" {
 	set email_partial [string replace $email \
 		[expr [string first "@" $email]+3] end "..."]
+        set member_url [acs_community_member_url -user_id $user_id]
     } 
 }
 
