@@ -28,6 +28,7 @@ ad_page_contract {
     last_row:onevalue
     option_list:onevalue
     total_users:onevalue
+    registered_user_p:onevalue
 }
 
 set context {} 
@@ -36,6 +37,9 @@ set valid_numrows [list 10 20 50 0]
 if { [lsearch $valid_numrows $num_rows] < 0 } {
     set num_rows 20
 }
+
+set registered_user_p [template::util::is_true [ad_conn user_id]]
+
 set numrow_vars [export_ns_set_vars url [list num_rows]]
 set search_vars [export_ns_set_vars form [list search start_row letter]]
 set browse_vars [export_ns_set_vars url [list search start_row]]
@@ -93,9 +97,15 @@ set name_header [ad_decode $order_by "name" "<a href=index?order_by=name-&$heade
 set email_header [ad_decode $order_by "email" "<a href=index?order_by=email-&$header_link_vars>E-mail Address:</a>&nbsp;^" "email-" "<a href=index?order_by=email&$header_link_vars>E-mail Address:</a>&nbsp;v" "<a href=index?order_by=email&$header_link_vars>E-mail Address:</a>"]
 
 if { $num_rows == 0 } {
-    db_multirow all_user_data get_all_users ""
+    db_multirow -extend { email_partial } all_user_data get_all_users "" {
+	set email_partial [string replace $email \
+		[expr [string first "@" $email]+3] end "..."]
+    } 
 } else {
-    db_multirow all_user_data get_all_n_users ""
+    db_multirow -extend { email_partial } all_user_data get_all_n_users "" {
+	set email_partial [string replace $email \
+		[expr [string first "@" $email]+3] end "..."]
+    } 
 }
 
 set rowcount [template::multirow size all_user_data]
