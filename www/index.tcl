@@ -55,27 +55,14 @@ if {$all_users == "t"} {
     set page_title "Browse members"
 }
 
-
-set order_clause ""
-if {$order_by == "name"} {
-    set order_clause " order by lower(last_name)"
-} elseif {$order_by == "email"} {
-    set order_clause " order by lower(email)"
-} elseif {$order_by == "name-"} {
-    set order_clause " order by lower(last_name) desc"
-} elseif {$order_by == "email-"} {
-    set order_clause " order by lower(email) desc"
-}
+set order_clause [db_map order_by_$order_by]
 
 if {![empty_string_p $search]} {
-    set where_clause "and (lower(first_names) like '%' || lower(:search) || '%'
-                        or lower(last_name) like '%' || lower(:search) || '%'
-                        or lower(email) like '%' || lower(:search) || '%')"
+    set where_clause [db_map where_1]
     set where_text " with something matching &quot;$search&quot;"
     set alpha_nav_bar ""
 } elseif {![empty_string_p $letter] && $letter != "all"} {
-    set where_clause "and upper(last_name) like :letter || '%'"
-    set where_text " with a last name starting with $letter"
+    set where_clause [db_map where_2]
     set alpha_nav_bar [dir_alpha_nav_bar -group_id $group_id -all_users $all_users $letter start_row]
 } else {
     set where_clause ""
@@ -90,7 +77,7 @@ set total_users [db_string total_users_1 "
 if {[empty_string_p $where_clause]} {
     set queried_users $total_users
 } else {
-    set queried_users [db_string total_users_1 "
+    set queried_users [db_string total_users_2 "
    select count(1)
      from $table_and_group
    $where_clause"]
@@ -102,26 +89,11 @@ set header_link_vars "[export_ns_set_vars url {order_by}]"
 set name_header [ad_decode $order_by "name" "<a href=index?order_by=name-&$header_link_vars>Name:</a>&nbsp;^" "name-" "<a href=index?order_by=name&$header_link_vars>Name:</a>&nbsp;v" "<a href=index?order_by=name&$header_link_vars>Name:</a>"]
 set email_header [ad_decode $order_by "email" "<a href=index?order_by=email-&$header_link_vars>E-mail Address:</a>&nbsp;^" "email-" "<a href=index?order_by=email&$header_link_vars>E-mail Address:</a>&nbsp;v" "<a href=index?order_by=email&$header_link_vars>E-mail Address:</a>"]
 
-
-# this query is really ugly (3 nested selects!) but it's the only way to get a
-# "between" to work correctly on the rownum of an ordered set
-# if anyone knows a better way, I'd love to hear it - mikeb
-set sql_query "select m.*
-                 from $table_and_group
-                $where_clause
-                $order_clause"
-
-if {$num_rows != "0"} {
-    set end_row [expr $start_row + $num_rows - 1]
-    set sql_query "
-                  select * from (
-                    select first_names, last_name, email, user_id, rownum as my_rownum from (
-                     $sql_query
-                    )
-                   ) where my_rownum between :start_row and :end_row"
+if { $num_rows == 0 } {
+    db_multirow all_user_data get_all_users ""
+} else {
+    db_multirow all_user_data get_all_n_users ""
 }
-
-db_multirow all_user_data get_all_users $sql_query
 
 set rowcount [template::multirow size all_user_data]
 
