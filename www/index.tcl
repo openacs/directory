@@ -20,7 +20,7 @@ ad_page_contract {
 } -properties {
     page_title:onevalue
     all_user_data:multirow
-    context_bar_args:onevalue
+    context:onevalue
     system_name:onevalue
     package_url:onevalue
     header_link_vars:onevalue
@@ -29,6 +29,8 @@ ad_page_contract {
     option_list:onevalue
     total_users:onevalue
 }
+
+set context {} 
 
 set valid_numrows [list 10 20 50 0]
 if { [lsearch $valid_numrows $num_rows] < 0 } {
@@ -62,6 +64,7 @@ if {![empty_string_p $search]} {
     set where_text " with something matching &quot;$search&quot;"
     set alpha_nav_bar ""
 } elseif {![empty_string_p $letter] && $letter != "all"} {
+    set where_text " with last names starting with &quot;$letter&quot;"
     set where_clause [db_map where_2]
     set alpha_nav_bar [dir_alpha_nav_bar -group_id $group_id -all_users $all_users $letter start_row]
 } else {

@@ -1,6 +1,6 @@
 <master src="@master_template@">
 <property name="title">@page_title@</property>
-<property name="navbar_list">@navbar_list@</property>
+<property name="context">@context@</property>
 
 <form action=index>
  @search_vars@
