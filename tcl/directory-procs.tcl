@@ -52,11 +52,9 @@ ad_proc dir_alpha_nav_bar {
     the "excluded_vars" list.
 } {
     if {$all_users == "t"} {
-        set table_and_group " dir_all_users m 
- where 1=1"
+        set table_and_group [db_map table_and_group_1]
     } else {
-        set table_and_group " dir_group_members m
- where group_id = :group_id"
+        set table_and_group [db_map table_and_group_2]
         set group_id [lindex [dir_app_group_info] 0]
     }
 

@@ -45,14 +45,12 @@ set master_template [ad_parameter MasterTemplate]
 # if they want to see all users, select from dir_all_users
 # and use a dummy where clause
 if {$all_users == "t"} {
-    set table_and_group " dir_all_users m 
-where 1=1"
+    set table_and_group [db_map table_and_group_1]
     set group_name "this site"
     set group_id -1
     set page_title "Browse users"
 } else {
-    set table_and_group " dir_group_members m
-where group_id = :group_id"
+    set table_and_group [db_map table_and_group_2]
     foreach {group_id group_name} [dir_app_group_info] {}
     set page_title "Browse members"
 }
@@ -85,14 +83,14 @@ if {![empty_string_p $search]} {
     set alpha_nav_bar [dir_alpha_nav_bar -group_id $group_id -all_users $all_users $letter start_row]
 }
 
-set total_users [db_string total_users "
+set total_users [db_string total_users_1 "
    select count(1)
      from $table_and_group"]
 
 if {[empty_string_p $where_clause]} {
     set queried_users $total_users
 } else {
-    set queried_users [db_string total_users "
+    set queried_users [db_string total_users_1 "
    select count(1)
      from $table_and_group
    $where_clause"]
