@@ -32,7 +32,7 @@
 </fullquery>
 
  
-<fullquery name="dir_app_group_info.n_id">      
+<fullquery name="dir_subsite_info.n_id">      
       <querytext>
       
         select node_id from site_nodes

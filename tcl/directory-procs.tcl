@@ -108,7 +108,7 @@ ad_proc dir_app_group_info {} {
     # find the closest subsite to the current package on the site_nodes tree
     # the inner query is guaranteed to always return at least 1 row, 
     # because the Main Site subsite is mounted at /
-    db_1row subsite_p {
+    db_1row subsite_p_1 {
         select * from (
           select object_id as subsite_id
             from site_nodes n
@@ -145,7 +145,7 @@ ad_proc dir_subsite_info {} {
     # find the closest subsite to the current package on the site_nodes tree
     # the inner query is guaranteed to always return at least 1 row, 
     # because the Main Site subsite is mounted at /
-    db_1row subsite_p {
+    db_1row subsite_p_2 {
         select * from (
           select object_id as subsite_id, acs_object.name(object_id) as subsite_name
             from site_nodes n
