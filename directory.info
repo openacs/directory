@@ -19,7 +19,7 @@
         <vendor url="http://www.arsdigita.com/">ArsDigita Corporation</vendor>
         <description format="text/plain">This package lets you browse or search for users of an ACS site.  It is subsite-aware, and allows you to view the members of the current subsite, or all users of the site.  See doc/ for more information.</description>
 
-        <requires url="acs-kernel" version="4.0"/>
+        <requires url="acs-kernel" version="4.6.2"/>
         <requires url="acs-subsite" version="4.2"/>
 
         <files>
