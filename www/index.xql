@@ -37,7 +37,7 @@
 
 <partialquery name="order_by_email">      
       <querytext>
-        order by lower(email)
+        order by email
       </querytext>
 </partialquery>
 
@@ -49,7 +49,7 @@
  
 <partialquery name="order_by_email-">      
       <querytext>
-        order by lower(email) desc
+        order by email desc
       </querytext>
 </partialquery>
 
@@ -57,7 +57,7 @@
       <querytext>
          and (lower(first_names) like '%' || lower(:search) || '%'
               or lower(last_name) like '%' || lower(:search) || '%'
-              or lower(email) like '%' || lower(:search) || '%')
+              or email like '%' || lower(:search) || '%')
       </querytext>
 </partialquery>
  
