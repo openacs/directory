@@ -3,7 +3,7 @@
 <property name="context">@context;noquote@</property>
 
 <form action=index>
- @search_vars@
+ @search_vars;noquote@
 <table width="@page_width@">
  <tr width="100%">
   <td>show: 
@@ -27,10 +27,10 @@
 
 <if @all_user_data:rowcount@ ne @total_users@>
    <if @all_user_data:rowcount@ ne @queried_users@>
-<b>Showing @start_row@ - @last_row@<if @queried_users@ ne @total_users@> of @queried_users@ <if @all_users@ eq "t">users</if><else>members</else> </if>@where_text@:</b><br>
+<b>Showing @start_row@ - @last_row@<if @queried_users@ ne @total_users@> of @queried_users@ <if @all_users@ eq "t">users</if><else>members</else> </if>@where_text;noquote@:</b><br>
    </if>
    <else>
-<b>Showing @queried_users@ <if @all_users@ eq "t">user<if @queried_users@ ne 1>s</if></if><else>member<if @queried_users@ ne 1>s</if></else>@where_text@:</b><br>
+<b>Showing @queried_users@ <if @all_users@ eq "t">user<if @queried_users@ ne 1>s</if></if><else>member<if @queried_users@ ne 1>s</if></else>@where_text;noquote@:</b><br>
    </else>
 </if>
   </td>
@@ -47,7 +47,7 @@
 <table width="@page_width@" border="0" cellpadding="4" cellspacing="2">
   <if @search@ eq "">
  <tr>
-  <td align="center">@alpha_nav_bar@</td>
+  <td align="center">@alpha_nav_bar;noquote@</td>
  </tr>
   </if>
  <tr>
@@ -59,8 +59,8 @@
         <table border="0" cellpadding="3" cellspacing="1" align="center" width="100%">
           @row_range_html;noquote@
          <tr class="HighlightColor">
-          <th>@name_header@</th>
-          <th>@email_header@</th>
+          <th>@name_header;noquote@</th>
+          <th>@email_header;noquote@</th>
          </tr>
 
     <multiple name="all_user_data">
