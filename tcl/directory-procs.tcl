@@ -11,7 +11,7 @@ ad_proc dir_navbar_list {
     -top:boolean
     {navbar_list_list ""}
 } {
-    set subsite_home [site_node_closest_ancestor_package_url -package_key "acs-subsite"]
+    set subsite_home [lindex [site_node::get_url_from_object_id -object_id [site_node::closest_ancestor_package -include_self -package_key "acs-subsite"]] 0]
 
     set package_home [ad_conn package_url]
 

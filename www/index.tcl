@@ -44,9 +44,9 @@ set numrow_vars [export_ns_set_vars url [list num_rows]]
 set search_vars [export_ns_set_vars form [list search start_row letter]]
 set browse_vars [export_ns_set_vars url [list search start_row]]
 
-set page_width      [ad_parameter PageWidth]
+set page_width      [parameter::get -parameter PageWidth]
 set navbar_list     [dir_navbar_list]
-set master_template [ad_parameter MasterTemplate]
+set master_template [parameter::get -parameter MasterTemplate]
 
 # if they want to see all users, select from dir_all_users
 # and use a dummy where clause

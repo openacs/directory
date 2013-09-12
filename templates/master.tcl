@@ -1,1 +1,1 @@
-set page_width [ad_parameter PageWidth]
+set page_width [parameter::get -parameter PageWidth]
