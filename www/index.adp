@@ -7,7 +7,7 @@
 <table width="@page_width@">
  <tr width="100%">
   <td>show: 
-   [<list name="valid_numrows"><if @valid_numrows:item@ eq @num_rows@><strong><if @valid_numrows:item@ eq 0>&nbsp;&nbsp;all&nbsp;&nbsp;</if><else>&nbsp;&nbsp;@valid_numrows:item@&nbsp;&nbsp;</else></strong></if><else>&nbsp;&nbsp;<a href="index?@numrow_vars@&num_rows=@valid_numrows:item@"><if @valid_numrows:item@ eq 0>all</if><else>@valid_numrows:item@</else></a>&nbsp;&nbsp;</else><if @valid_numrows:rownum@ not eq @valid_numrows:rowcount@>|</if></list>]
+   [<list name="valid_numrows"><if @valid_numrows:item@ eq @num_rows@><strong><if @valid_numrows:item@ eq 0>&nbsp;&nbsp;all&nbsp;&nbsp;</if><else>&nbsp;&nbsp;@valid_numrows:item@&nbsp;&nbsp;</else></strong></if><else>&nbsp;&nbsp;<a href="index?@numrow_vars@&amp;num_rows=@valid_numrows:item@"><if @valid_numrows:item@ eq 0>all</if><else>@valid_numrows:item@</else></a>&nbsp;&nbsp;</else><if @valid_numrows:rownum@ not eq @valid_numrows:rowcount@>|</if></list>]
   </td>
  <if @search@ not nil>
   <td>[&nbsp;<a href="index?@browse_vars@">browse by letter</a>&nbsp;]</td>
@@ -15,7 +15,7 @@
  <else>
   <td>&nbsp;</td>
  </else>
-  <td align=right><b>search:</b>&nbsp;<input type=text size=10 name=search></td>
+  <td align="right"><b>search:</b>&nbsp;<input type="text" size="10" name="search"></td>
  </tr>
 </table>
 </form>
@@ -35,7 +35,7 @@
 </if>
   </td>
   <td align="right" valign="top">
-   [&nbsp;<if @all_users@ eq "t"><a href="index?num_rows=@num_rows@">subsite members</a></if><else><b>subsite members</b></else>&nbsp;|&nbsp;<if @all_users@ ne "t"><a href="index?num_rows=@num_rows@&all_users=t">all users</a></if><else><b>all users</b></else>&nbsp;]
+   [&nbsp;<if @all_users@ eq "t"><a href="index?num_rows=@num_rows@">subsite members</a></if><else><b>subsite members</b></else>&nbsp;|&nbsp;<if @all_users@ ne "t"><a href="index?num_rows=@num_rows@&amp;all_users=t">all users</a></if><else><b>all users</b></else>&nbsp;]
   </td>
  </tr>
 </table>
