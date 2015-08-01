@@ -7,7 +7,7 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>f</singleton-p>
 
-    <version name="4.2a" url="http://openacs.org/repository/download/apm/directory-4.2a.apm">
+    <version name="4.3" url="http://openacs.org/repository/download/apm/directory-4.3.apm">
     <database-support>
         <database>oracle</database>
         <database>postgresql</database>
@@ -16,9 +16,11 @@
         <owner url="http://www.grumet.net/">Andrew Grumet</owner>
         <summary>User Directory</summary>
         <release-date>2001-04-17</release-date>
+	<maturity>0</maturity>
         <vendor url="http://openacs.org">OpenACS</vendor>
         <description format="text/plain">This package lets you browse or search for users of an OpenACS site.  It is subsite-aware, and allows you to view the members of the current subsite, or all users of the site.  </description>
 
+	<provides url="directory" version="4.3"/>
         <requires url="acs-kernel" version="4.6.2"/>
         <requires url="acs-subsite" version="4.2"/>
 
