@@ -2,10 +2,14 @@
 <property name="context">{/doc/directory {Directory}} {Directory Package Documentation}</property>
 <property name="doc(title)">Directory Package Documentation</property>
 <master>
-
-<body>
-<a href="http://www.arsdigita.com/"><img src="images/arsdigita2.gif" border="0" width="176" height="31"></a><br><br><a class="topnav" href="/">Home</a><span class="topnav">:</span><strong class="topnav">Directory Package
-Documentation </strong><div class="book" id="N1">
+<a href="http://www.arsdigita.com/"><img src="images/arsdigita2.gif" border="0" width="176" height="31"></a>
+<br>
+<br>
+<a class="topnav" href="/">Home</a>
+<span class="topnav">:</span>
+<strong class="topnav">Directory Package
+Documentation </strong>
+<div class="book" id="N1">
 <div class="titlepage">
 <h1 class="title">
 <a name="N1" id="N1"></a>Directory Package
@@ -60,11 +64,10 @@ viewing "subsite members" (people who have been explicitly made a
 member of the current subsite) or "all users" (all registered users
 of the site).</p>
 </div>
-</div><div class="navfooter">
-<hr size="1" noshade="noshade"><table width="100%"><tr>
-<td width="40%" align="left"> </td><td width="20%" align="center">
-<a href="mailto:acs-docs\@arsdigita.com"></a><address class="nav">acs-docs\@arsdigita.com</address>
-</td><td width="40%" align="right"> </td>
-</tr></table>
 </div>
-</body>
+<include src="/packages/acs-core-docs/lib/navfooter"
+		    leftLink="" leftLabel="" leftTitle=""
+		    rightLink="" rightLabel="" rightTitle=""
+		    homeLink="" homeLabel="" 
+		    upLink="" upLabel=""> 
+		
