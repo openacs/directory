@@ -75,7 +75,7 @@ ad_proc dir_alpha_nav_bar {
 
     set html_list [list]
     foreach l [dir_all_letters] {
-	if { [lsearch -exact $initial_list $l] == -1 } {
+	if {$l ni $initial_list} {
 	    # This means no user has this initial
 	    lappend html_list "<font color=gray>$l</font>"
 	} elseif { [string compare $l $letter] == 0 } {
