@@ -38,7 +38,7 @@ Directory package again.</p>
 Package</strong>
 </p><p>Now that you have the package installed, you need to mount it
 somewhere. If you only have one instance of the acs-subsite package
-mounted (the "Main Site") you can mount it anyhwere under
+mounted (the "Main Site") you can mount it anywhere under
 that package. If you have multiple instances of acs-subsite, you
 can mount an instance of Directory under each subsite.</p><p>When listing users, the Directory package will find the nearest
 subsite above it on the site_nodes tree. It will then list
