@@ -71,7 +71,7 @@
        <tr class="RowColorEven">
      </else>
         <td width="50%"><a href="@all_user_data.member_url@">@all_user_data.last_name@, @all_user_data.first_names@</a></td>
-	<if @registered_user_p@>
+	<if @registered_user_p;literal@ true>
         <td width="50%"><a href="mailto:@all_user_data.email@">@all_user_data.email@</a></td>
 	</if>
 	<else>
