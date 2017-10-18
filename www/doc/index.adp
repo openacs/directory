@@ -2,7 +2,7 @@
 <property name="context">{/doc/directory {Directory}} {Directory Package Documentation}</property>
 <property name="doc(title)">Directory Package Documentation</property>
 <master>
-<a href="http://www.arsdigita.com/"><img src="images/arsdigita2.gif" border="0" width="176" height="31"></a>
+<a href="http://web.archive.org/web/20011215005606/http://www.arsdigita.com:80/"><img src="images/arsdigita2.gif" border="0" width="176" height="31"></a>
 <br>
 <br>
 <a class="topnav" href="/">Home</a>
