@@ -130,7 +130,7 @@ ad_proc dir_subsite_info {} {
     return [list $subsite_id $subsite_name]
 }
 
-set tcllib [expr {[info exists ::acs::tcllib] ? $::acs::tcllib : [ns_info tcllib]}]
+set tcllib [expr {[info exists ::acs::tcllib] ? $::acs::tcllib : [ns_server tcllib]}]
 set mods_file $tcllib/directory-mods.tcl
     
 if [file exists $mods_file] {
